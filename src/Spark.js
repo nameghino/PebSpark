@@ -25,7 +25,6 @@ Spark.prototype.createVariableRequest = function(variable) {
 
 Spark.prototype.call = function(method, args, callback) {
   var opt = this.createFunctionRequest(method, args);
-  console.log("call: ", JSON.stringify(opt));
   this.internal_call(opt, callback);
 };
 
@@ -38,12 +37,10 @@ Spark.prototype.internal_call = function(request, callback) {
   ajax(request,
        //success
     function(data) {
-      console.log('ajax success');
       callback(null, data);
     },   
        //fail  
     function(data) {
-      console.log('ajax failure:', JSON.stringify(data));
       callback(data, null);
     });
 };
